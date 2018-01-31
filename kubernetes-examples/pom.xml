@@ -74,17 +74,29 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <configuration>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.1.0</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <appendAssemblyId>false</appendAssemblyId>
             <archive>
-                <manifest>
-                    <mainClass>io.fabric8.openshift.examples.ListDeploymentConfigs</mainClass>
-                </manifest>
+              <manifest>
+                <mainClass>io.fabric8.openshift.examples.ListDeploymentConfigs</mainClass>
+              </manifest>
             </archive>
-        </configuration>
-    </plugin>
+            <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+          </configuration>
+        </plugin>
     </plugins>
   </build>
 
